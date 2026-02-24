@@ -1,0 +1,196 @@
+/**
+ * File: style.css
+ *
+ * Purpose:
+ * - Styles the WorkSphere login/register page.
+ * - Applies the Theme and typography.
+ * - Provides layout rules for:
+ *   - Header branding area
+ *   - Centered login/register card container
+ *   - Form rows (labels + inputs)
+ *   - Action buttons and status message output
+ * - Includes a responsive layout for small screens.
+ *
+ * Author: Sandip Bohara Chhetri
+ */
+
+:root{
+  /* Theme tokens */
+  --bg: #F3F0E6;          /* soft ivory */
+  --surface: #FFFFFF;
+  --surface-2: #FBFAF6;
+
+  --text: #151A22;        /* deep navy */
+  --muted: rgba(21,26,34,0.62);
+
+  --border: rgba(21,26,34,0.12);
+  --border-strong: rgba(21,26,34,0.18);
+
+  --primary: #151A22;     /* navy */
+  --primary-2: #455048;   /* sage */
+  --accent: #BD916F;      /* tan */
+  --gold: #C0B283;        /* muted gold */
+
+  --danger: #8F2D2D;
+
+  /* Elevation + radius */
+  --shadow: 0 18px 50px rgba(0,0,0,0.08);
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.06);
+  --radius: 16px;
+
+  /* Typography tokens */
+  --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+  --font-title: ui-serif, Georgia, "Times New Roman", Times, serif;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family: var(--font-body);
+  color: var(--text);
+
+  /* Layered gradients for a subtle background texture */
+  background:
+    radial-gradient(900px 520px at 12% 10%, rgba(69,80,72,0.14), transparent 55%),
+    radial-gradient(800px 520px at 90% 0%, rgba(192,178,131,0.18), transparent 60%),
+    var(--bg);
+
+  text-align:center;
+  min-height:100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Top page branding bar */
+header{
+  background: linear-gradient(135deg, var(--primary), rgba(69,80,72,0.95));
+  color:#fff;
+  padding: 18px 16px;
+  font-family: var(--font-title);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  box-shadow: var(--shadow-soft);
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+/* Center card wrapper */
+.container{
+  max-width: 460px;
+  margin: 54px auto;
+  padding: 22px;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+}
+
+/* Card heading */
+#form h1{
+  margin: 6px 0 18px;
+  font-family: var(--font-title);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+/* Decorative underline under the heading */
+#form h1:after{
+  content:"";
+  display:block;
+  width: 78px;
+  height: 2px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, transparent, rgba(189,145,111,0.75), transparent);
+}
+
+/* Row layout for label + input */
+.input-row{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+/* Form labels */
+label{
+  flex: 1;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  text-align:left;
+  letter-spacing: 0.25px;
+}
+
+/* Text inputs (username/password) */
+input{
+  flex: 2;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  font-size: 15px;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+/* Placeholder tone */
+input::placeholder{
+  color: rgba(21,26,34,0.35);
+}
+
+/* Input focus ring */
+input:focus{
+  border-color: rgba(189,145,111,0.55);
+  box-shadow: 0 0 0 5px rgba(189,145,111,0.18);
+}
+
+/* Container for Register/Login buttons */
+.button-container{
+  display:flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* Base button styling */
+button{
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: transform 0.08s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Hover elevation + darker background */
+button:hover{
+  background: #0F131A; /* slightly darker than #151A22 */
+  box-shadow: 0 12px 28px rgba(21,26,34,0.22);
+}
+
+/* Press feedback */
+button:active{ transform: translateY(1px); }
+
+/* Status/error message output */
+#message{
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--danger);
+  font-weight: 700;
+}
+
+/* Responsive layout for small screens */
+@media (max-width: 520px){
+  .container{ margin: 28px 14px; }
+  .input-row{ flex-direction: column; align-items: stretch; }
+  label{ text-align:left; }
+}

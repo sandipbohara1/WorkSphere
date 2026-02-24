@@ -1,0 +1,258 @@
+/**
+ * File: userManage.css
+ *
+ * Purpose:
+ * - Styles the User Management page (userManage.php).
+ * - Applies the shared WorkSphere luxury palette and typography.
+ * - Provides styling for:
+ *   - Page container + headings
+ *   - Add User form inputs, labels, and button
+ *   - Users table (header, rows, hover states)
+ *   - Action links in the table (Delete) to look like buttons
+ * - Includes responsive adjustments for smaller screens.
+ *
+ * Author: Sandip Bohara Chhetri
+ */
+
+:root{
+  --bg:#F3F0E6;
+  --surface: rgba(255,255,255,0.92);
+  --surface-solid:#FFFFFF;
+  --surface-2:#FBFAF6;
+
+  --text:#151A22;
+  --muted: rgba(21,26,34,0.62);
+
+  --border: rgba(21,26,34,0.10);
+  --border-strong: rgba(21,26,34,0.16);
+
+  --navy:#151A22;
+  --sage:#455048;
+  --tan:#BD916F;
+  --gold:#C0B283;
+
+  --danger:#8F2D2D;
+
+  --shadow: 0 18px 50px rgba(0,0,0,0.08);
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.06);
+  --radius: 18px;
+
+  --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+  --font-title: ui-serif, Georgia, "Times New Roman", Times, serif;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family: var(--font-body);
+  color: var(--text);
+
+  /* Background layers for depth */
+  background:
+    radial-gradient(900px 520px at 12% 10%, rgba(69,80,72,0.14), transparent 55%),
+    radial-gradient(800px 520px at 90% 0%, rgba(192,178,131,0.18), transparent 60%),
+    var(--bg);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Main container (centers everything) ===== */
+.container{
+  max-width: 980px;
+  margin: 40px auto;
+  padding: 0 18px 46px;
+}
+
+/* ===== Main title if you have it ===== */
+h1{
+  margin: 0 0 16px;
+  padding: 18px 22px;
+  border-radius: calc(var(--radius) + 8px);
+  background: linear-gradient(135deg, var(--navy), rgba(69,80,72,0.96));
+  color:#fff;
+  font-family: var(--font-title);
+  font-weight: 700;
+  letter-spacing: 0.9px;
+  box-shadow: var(--shadow-soft);
+  text-align:center;
+}
+
+/* ===== Section titles (Add User / Users) ===== */
+h2, h3{
+  margin: 14px 0 10px;
+  font-family: var(--font-title);
+  letter-spacing: 0.5px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+/* General link styling (used for navigation like "Main Page") */
+a{
+  color: var(--sage);
+  font-weight: 800;
+  text-decoration: none;
+}
+a:hover{ text-decoration: underline; }
+
+/* ==========================================
+   ADD USER FORM (your current layout)
+   Targets inputs/select/button directly
+   ========================================== */
+
+input, select{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+input::placeholder{
+  color: rgba(21,26,34,0.35);
+}
+
+input:focus, select:focus{
+  border-color: rgba(189,145,111,0.55);
+  box-shadow: 0 0 0 5px rgba(189,145,111,0.18);
+}
+
+/* labels for Add User inputs */
+label{
+  display:block;
+  margin: 12px 0 6px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.25px;
+  color: var(--muted);
+}
+
+/* Add User button */
+button,
+#addUserBtn{
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--navy);
+  color:#fff;
+  font-weight: 900;
+  letter-spacing: 0.25px;
+  cursor:pointer;
+  transition: transform 0.08s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover,
+#addUserBtn:hover{
+  background: #0F131A;
+  box-shadow: 0 12px 28px rgba(21,26,34,0.22);
+}
+
+button:active,
+#addUserBtn:active{
+  transform: translateY(1px);
+}
+
+/* ==========================================
+   USERS TABLE
+   ========================================== */
+
+table{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 10px;
+  background: var(--surface-solid);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow:hidden;
+  box-shadow: var(--shadow);
+}
+
+/* Table header cells */
+thead th{
+  text-align:left;
+  padding: 14px 14px;
+  font-size: 12px;
+  letter-spacing: 0.22px;
+  color: rgba(21,26,34,0.70);
+  background: linear-gradient(180deg, var(--surface-solid), var(--surface-2));
+  border-bottom: 1px solid var(--border);
+}
+
+/* Table body cells */
+tbody td{
+  padding: 16px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  background: #fff;
+}
+
+/* Row hover state */
+tbody tr:hover td{
+  background: rgba(69,80,72,0.06);
+}
+
+/* Dropdown in table (Change Role) */
+tbody td select{
+  width: auto;
+  min-width: 180px;
+  padding: 10px 14px;
+  border-radius: 999px;
+}
+
+/* ==========================================
+   Action links in table (Delete)
+   - Delete is an <a> element in the Actions column.
+   - This makes it look and behave like a button.
+   ========================================== */
+
+tbody td a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width: 92px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(143,45,45,0.22);
+  background: rgba(143,45,45,0.10);
+  color: var(--danger);
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  text-decoration:none;
+  transition: transform 0.08s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+tbody td a:hover{
+  background: rgba(143,45,45,0.16);
+  border-color: rgba(143,45,45,0.34);
+  box-shadow: 0 12px 28px rgba(143,45,45,0.10);
+}
+
+tbody td a:active{
+  transform: translateY(1px);
+}
+
+
+.container form,
+.container .input-container,
+.container .card,
+.container > div:first-of-type{
+  /* Safe enhancement if the page uses card-like blocks */
+  border-radius: var(--radius);
+}
+
+/* Responsive adjustments */
+@media (max-width: 760px){
+  tbody td select{
+    width: 100%;
+    min-width: unset;
+  }
+}

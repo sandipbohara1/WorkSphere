@@ -1,0 +1,42 @@
+[01-May-2025 05:35:24 UTC] Inside API.php GET:{"request":"messages"}
+[01-May-2025 05:35:24 UTC] Inside API.php Request:"messages"
+[01-May-2025 05:35:24 UTC] In DB Util file
+[01-May-2025 05:35:24 UTC] Connected to Library/DB.
+[01-May-2025 05:35:24 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/REST/apiDef.php:64) in /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/REST/apiDef.php on line 15
+[01-May-2025 05:35:24 UTC] Inside API.PHP after constructor call
+[01-May-2025 05:35:24 UTC] Connected to Library/DB.
+[01-May-2025 05:35:27 UTC] Inside API.php GET:{"request":"messages"}
+[01-May-2025 05:35:27 UTC] Inside API.php Request:"messages"
+[01-May-2025 05:35:27 UTC] In DB Util file
+[01-May-2025 05:35:27 UTC] Connected to Library/DB.
+[01-May-2025 05:35:27 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/REST/apiDef.php:64) in /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/REST/apiDef.php on line 15
+[01-May-2025 05:35:27 UTC] Inside API.PHP after constructor call
+[01-May-2025 05:35:27 UTC] Connected to Library/DB.
+[01-May-2025 05:35:28 UTC] Inside API.php GET:{"request":"messages"}
+[01-May-2025 05:35:28 UTC] Inside API.php Request:"messages"
+[01-May-2025 05:35:28 UTC] In DB Util file
+[01-May-2025 05:35:28 UTC] Connected to Library/DB.
+[01-May-2025 05:35:28 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/REST/apiDef.php:64) in /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/REST/apiDef.php on line 15
+[01-May-2025 05:35:28 UTC] Inside API.PHP after constructor call
+[01-May-2025 05:35:28 UTC] Connected to Library/DB.
+[01-May-2025 05:35:28 UTC] Inside API.php GET:{"request":"messages"}
+[01-May-2025 05:35:28 UTC] Inside API.php Request:"messages"
+[01-May-2025 05:35:28 UTC] In DB Util file
+[01-May-2025 05:35:28 UTC] Connected to Library/DB.
+[01-May-2025 05:35:28 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/REST/apiDef.php:64) in /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/REST/apiDef.php on line 15
+[01-May-2025 05:35:28 UTC] Inside API.PHP after constructor call
+[01-May-2025 05:35:28 UTC] Connected to Library/DB.
+[01-May-2025 05:35:36 UTC] Inside API.php GET:{"request":"messages"}
+[01-May-2025 05:35:36 UTC] Inside API.php Request:"messages"
+[01-May-2025 05:35:36 UTC] In DB Util file
+[01-May-2025 05:35:36 UTC] Connected to Library/DB.
+[01-May-2025 05:35:36 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/REST/apiDef.php:64) in /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/REST/apiDef.php on line 15
+[01-May-2025 05:35:36 UTC] Inside API.PHP after constructor call
+[01-May-2025 05:35:36 UTC] Connected to Library/DB.
+[01-May-2025 05:35:56 UTC] Inside API.php GET:{"request":"messages"}
+[01-May-2025 05:35:56 UTC] Inside API.php Request:"messages"
+[01-May-2025 05:35:56 UTC] In DB Util file
+[01-May-2025 05:35:56 UTC] Connected to Library/DB.
+[01-May-2025 05:35:56 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/REST/apiDef.php:64) in /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/REST/apiDef.php on line 15
+[01-May-2025 05:35:56 UTC] Inside API.PHP after constructor call
+[01-May-2025 05:35:56 UTC] Connected to Library/DB.

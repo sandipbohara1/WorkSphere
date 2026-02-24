@@ -1,0 +1,525 @@
+/**
+ * File: style.css
+ *
+ * Purpose:
+ * - Styles the Messages page (Messenger-style layout).
+ * - Keeps the app locked to the viewport height so ONLY the sidebar list + chat feed scroll.
+ * - Defines the color palette, typography, spacing, message bubbles, buttons, and the ⋯ dropdown menu.
+ *
+ * Author: Sandip Bohara Chhetri
+ */
+
+:root{
+  /* ===== Color palette ===== */
+  --bg: #F3F0E6;              /* ivory */
+  --panel: rgba(255,255,255,0.92);
+  --panel2: rgba(255,255,255,0.86);
+
+  --text:#151A22;             /* navy */
+  --muted: rgba(21,26,34,0.62);
+
+  --border: rgba(21,26,34,0.10);
+  --border2: rgba(21,26,34,0.14);
+
+  --navy:#151A22;
+  --sage:#455048;
+  --tan:#BD916F;
+  --gold:#C0B283;
+
+  --danger:#8F2D2D;
+
+  --r: 18px;
+  --r2: 14px;
+
+  --shadow: 0 18px 50px rgba(0,0,0,.08);
+  --shadow2: 0 10px 30px rgba(0,0,0,.06);
+
+  --t: 160ms;
+  --ease: cubic-bezier(.2,.8,.2,1);
+
+  /* Typography */
+  --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  --fontTitle: ui-serif, Georgia, "Times New Roman", Times, serif;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  font-family: var(--font);
+  color: var(--text);
+
+  /* Soft background glow so the panels feel "lifted" */
+  background:
+    radial-gradient(1000px 600px at 15% 0%, rgba(69,80,72,.14), transparent 60%),
+    radial-gradient(1000px 600px at 85% 10%, rgba(192,178,131,.18), transparent 60%),
+    var(--bg);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Main app container.
+   This is the key piece that makes internal scrolling work:
+   - fixed height (viewport minus margins)
+   - min-height:0 so children can actually shrink + scroll */
+.app{
+  width:min(1200px, calc(100% - 24px));
+  margin:18px auto;
+
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+
+  height: calc(100vh - 36px);  /* 18px top + 18px bottom margin */
+  min-height: 0;
+}
+
+/* ===== Top bar ===== */
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:14px 16px;
+  border-radius: var(--r);
+  border:1px solid var(--border);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brandDot{
+  width:10px;height:10px;border-radius:999px;
+  background: linear-gradient(135deg, var(--tan), var(--gold));
+  box-shadow: 0 0 0 6px rgba(189,145,111,.18);
+}
+
+.brandTitle{
+  font-family: var(--fontTitle);
+  font-weight: 700;
+  letter-spacing: .7px;
+  font-size: 18px;
+}
+
+.brandSub{
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.me{
+  font-size: 12px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.70);
+}
+
+/* ===== Layout ===== */
+/* Two-column grid:
+   - left: users list
+   - right: chat panel
+   flex:1 makes it take remaining height under the topbar */
+.layout{
+  display:grid;
+  grid-template-columns: 360px 1fr;
+  gap:14px;
+
+  flex: 1;
+  min-height: 0;    
+}
+
+.sidebar, .chat{
+  border-radius: var(--r);
+  border:1px solid var(--border);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+
+  /* Without this, nested scroll areas can "break" and push the page instead */
+  min-height: 0;
+}
+
+/* ===== Sidebar ===== */
+/* Sidebar is a column so the header stays fixed and the user list scrolls */
+.sidebar{
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+}
+
+.sidebarHeader{
+  display:flex;
+  gap:10px;
+  padding:14px;
+  border-bottom:1px solid var(--border);
+  background: var(--panel2);
+}
+
+.searchBox{
+  flex:1;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius: 999px;
+  border:1px solid var(--border);
+  background: rgba(243,240,230,0.60);
+}
+
+.searchIcon{ opacity:.70; }
+
+.searchBox input{
+  width:100%;
+  border:0;
+  outline:none;
+  background:transparent;
+  color: var(--text);
+}
+
+.searchBox input::placeholder{
+  color: rgba(21,26,34,.40);
+}
+
+.sidebarBody{
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+
+  flex: 1;
+  min-height: 0;
+}
+
+.sidebarTitleRow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.sidebarTitle{
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 800;
+  letter-spacing:.25px;
+}
+
+.pill{
+  font-size: 12px;
+  color: var(--muted);
+  border:1px solid var(--border);
+  padding:6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.70);
+}
+
+/* The only scrolling part inside the sidebar */
+.userList{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+
+  overflow:auto;
+  flex: 1;
+  min-height: 0;
+
+  padding-right: 6px;
+}
+
+.userItem{
+  width:100%;
+  text-align:left;
+  padding:12px 12px;
+  border-radius: var(--r2);
+  border:1px solid var(--border);
+  background: rgba(255,255,255,0.72);
+  color: var(--text);
+  cursor:pointer;
+  transition: transform var(--t) var(--ease), border-color var(--t) var(--ease), background var(--t) var(--ease), box-shadow var(--t) var(--ease);
+}
+
+.userItem:hover{
+  transform: translateY(-1px);
+  border-color: rgba(189,145,111,.45);
+  box-shadow: 0 10px 22px rgba(0,0,0,.06);
+}
+
+.userItem.active{
+  border-color: rgba(69,80,72,.55);
+  box-shadow: 0 0 0 4px rgba(69,80,72,.12);
+  background: rgba(255,255,255,0.86);
+}
+
+/* ===== Chat ===== */
+/* Chat panel is also a column:
+   - header fixed
+   - feed scrolls
+   - composer fixed at bottom */
+.chat{
+  display:flex;
+  flex-direction:column;
+  min-height: 0;
+}
+
+.chatHeader{
+  padding:14px 16px;
+  border-bottom:1px solid var(--border);
+  background: var(--panel2);
+}
+
+.chatTitle{
+  font-family: var(--fontTitle);
+  font-weight: 700;
+  letter-spacing: .6px;
+}
+
+.chatMeta{
+  margin-top:4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* This is the scrolling area for messages */
+.chatFeed{
+  flex:1;
+  min-height: 0;
+  padding:14px;
+  overflow:auto;
+
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* ===== Messages ===== */
+.msg{
+  max-width: min(76%, 680px);
+  border:1px solid var(--border);
+  background: rgba(255,255,255,0.78);
+  border-radius: 16px;
+  padding: 10px 12px;
+  box-shadow: 0 8px 18px rgba(0,0,0,.04);
+}
+
+.msgHeader{
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.msgText{
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.msg.mine{
+  margin-left:auto;
+  background: rgba(189,145,111,.14);
+  border-color: rgba(189,145,111,.30);
+}
+
+/* ===== Message action buttons ===== */
+.msgActions{
+  margin-top: 8px;
+  display:flex;
+  gap:8px;
+}
+
+/* Shared button styling */
+.btn{
+  border:1px solid var(--border);
+  padding:10px 14px;
+  border-radius: 999px;
+  cursor:pointer;
+  transition: transform var(--t) var(--ease), background var(--t) var(--ease), border-color var(--t) var(--ease), box-shadow var(--t) var(--ease);
+  background: rgba(255,255,255,0.65);
+  color: var(--text);
+}
+
+.btn:hover{
+  background: rgba(243,240,230,0.80);
+  transform: translateY(-1px);
+  border-color: var(--border2);
+  box-shadow: 0 10px 22px rgba(0,0,0,.05);
+}
+.btn:active{ transform: translateY(0); }
+
+.btn.primary{
+  background: linear-gradient(135deg, var(--navy), var(--sage));
+  border-color: rgba(21,26,34,.22);
+  color: #fff;
+}
+.btn.primary:hover{
+  background: linear-gradient(135deg, #0F131A, var(--sage));
+}
+
+.btn.small{
+  padding:7px 10px;
+  font-size: 12px;
+}
+
+.btn.danger{
+  border-color: rgba(143,45,45,.25);
+  color: var(--danger);
+  background: rgba(143,45,45,.08);
+}
+.btn.danger:hover{
+  background: rgba(143,45,45,.14);
+  border-color: rgba(143,45,45,.38);
+}
+
+/* ===== Composer ===== */
+.composerWrap{
+  border-top:1px solid var(--border);
+  background: var(--panel2);
+  padding: 12px 12px 10px;
+}
+
+.composer{
+  display:flex;
+  gap:10px;
+}
+
+.composer input{
+  flex:1;
+  border:1px solid var(--border);
+  border-radius: 999px;
+  padding: 12px 12px;
+  background: rgba(243,240,230,0.70);
+  color: var(--text);
+  outline:none;
+}
+
+.composer input::placeholder{
+  color: rgba(21,26,34,.40);
+}
+
+.hint{
+  margin-top:8px;
+  font-size: 12px;
+  color: rgba(21,26,34,.55);
+}
+
+/* Focus states (keyboard accessibility) */
+button:focus-visible,
+input:focus-visible{
+  outline:none;
+  box-shadow: 0 0 0 4px rgba(189,145,111,.22);
+  border-color: rgba(189,145,111,.55);
+}
+
+/* ===== Three-dot menu (legacy wrapper - ok to keep) ===== */
+/* This wrapper was used earlier; leaving it doesn't hurt anything */
+.msgMenuWrapper{
+  margin-top: 8px;
+  display:flex;
+  justify-content:flex-end;
+  position: relative;
+}
+
+.msgMenuBtn{
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.65);
+  color: rgba(21,26,34,0.70);
+  border-radius: 999px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: transform 160ms cubic-bezier(.2,.8,.2,1), background 160ms;
+}
+
+.msgMenuBtn:hover{
+  background: rgba(243,240,230,0.85);
+  transform: translateY(-1px);
+}
+
+/* ===== Unsent message look ===== */
+/* Server replaces the text with "Message unsent" (so we style it differently) */
+.msg.unsent{
+  background: rgba(21,26,34,0.03) !important;
+  border-style: dashed !important;
+}
+
+.msg.unsent .msgText{
+  font-style: italic;
+  color: rgba(21,26,34,0.55);
+}
+
+/* =========================================
+   Message row layout (bubble + outside dots)
+   ========================================= */
+.msgRow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.mineRow{ justify-content:flex-end; }
+.theirRow{ justify-content:flex-start; }
+
+/* Reset margins because bubbles sit inside a flex row now */
+.msg{
+  max-width: min(76%, 680px);
+  margin: 0 !important;
+}
+
+.msg.mine{
+  margin: 0 !important;
+}
+
+.msgMenuOutside{
+  position: relative;
+  display:flex;
+  align-items:center;
+  flex: 0 0 auto;
+}
+
+/* The actual dropdown menu for ⋯ actions */
+.msgDropdown{
+  display:none;
+  position:absolute;
+  top: 38px;
+  right: 0;
+  min-width: 150px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  overflow:hidden;
+  z-index: 9999;
+}
+
+/* When there isn't space below, JS adds .dropup so it opens upward instead */
+.msgDropdown.dropup{
+  top: auto !important;
+  bottom: 38px !important;
+}
+
+.dropdownItem{
+  width: 100%;
+  text-align:left;
+  border: 0;
+  background: transparent;
+  padding: 10px 12px;
+  cursor:pointer;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.dropdownItem:hover{
+  background: rgba(69,80,72,0.06);
+}
+
+.dropdownItem.unsendBtn{
+  color: #8F2D2D;
+}

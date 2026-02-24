@@ -1,0 +1,7 @@
+[01-May-2025 05:35:24 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/index.php on line 27
+[01-May-2025 05:35:27 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/index.php on line 27
+[01-May-2025 05:35:28 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/index.php on line 27
+[01-May-2025 05:35:28 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/index.php on line 27
+[01-May-2025 05:35:36 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/index.php on line 27
+[01-May-2025 05:35:56 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/sandipt1241/public_html/2550/cmpe2550/labs/LAB03/index.php on line 27
+session cann

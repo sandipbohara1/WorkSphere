@@ -1,0 +1,165 @@
+/**
+ * File: styleWelcome.css
+ *
+ * Purpose:
+ * - Styles the WorkSphere main landing page (welcome.php).
+ * - Uses the shared luxury palette and typography.
+ * - Creates a centered card layout containing:
+ *   - A branded header title
+ *   - Navigation links (User Management, Role Management, Messages)
+ *   - A logout button
+ *   - A footer status line showing the logged-in username
+ *
+ * Layout approach:
+ * - The <body> uses flexbox to center the main .container both vertically and horizontally.
+ * - The .container acts like a glassy “panel” with blur, border, and shadow.
+ * - Links are displayed as pill-shaped buttons with hover elevation.
+ *
+ * Author: Sandip Bohara Chhetri
+ */
+
+:root{
+  /* Theme tokens */
+  --bg:#F3F0E6;
+  --surface:#FFFFFF;
+  --surface-2:#FBFAF6;
+
+  --text:#151A22;
+  --muted:rgba(21,26,34,0.62);
+
+  --border:rgba(21,26,34,0.12);
+  --border-strong:rgba(21,26,34,0.18);
+
+  --primary:#151A22;
+  --sage:#455048;
+  --accent:#BD916F;
+  --gold:#C0B283;
+
+  /* Elevation + radius */
+  --shadow:0 18px 50px rgba(0,0,0,0.08);
+  --shadow-soft:0 10px 30px rgba(0,0,0,0.06);
+  --radius:16px;
+
+  /* Typography */
+  --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+  --font-title: ui-serif, Georgia, "Times New Roman", Times, serif;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+body{
+  font-family: var(--font-body);
+
+  /* Soft background texture */
+  background:
+    radial-gradient(900px 520px at 12% 10%, rgba(69,80,72,0.14), transparent 55%),
+    radial-gradient(800px 520px at 90% 0%, rgba(192,178,131,0.18), transparent 60%),
+    var(--bg);
+
+  color: var(--text);
+  min-height:100vh;
+
+  /* Center the card */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Main panel card */
+.container{
+  width: min(880px, 92vw);
+  background: rgba(255,255,255,0.92);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 6px);
+  box-shadow: var(--shadow);
+  padding: 22px;
+  text-align:center;
+  backdrop-filter: blur(6px);
+}
+
+/* Branded title header */
+header h1{
+  font-family: var(--font-title);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+  color:#fff;
+  padding: 18px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--primary), rgba(69,80,72,0.95));
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 18px;
+}
+
+/* Decorative line under the header title */
+header h1:after{
+  content:"";
+  display:block;
+  width: 82px;
+  height: 2px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, transparent, rgba(192,178,131,0.75), transparent);
+}
+
+/* Link group (pill buttons) */
+.links{
+  display:flex;
+  gap: 12px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin: 18px 0 10px;
+}
+
+.links a{
+  text-decoration:none;
+  color: var(--primary);
+  font-weight: 800;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
+  transition: transform 0.08s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Hover elevation for nav pills */
+.links a:hover{
+  border-color: rgba(189,145,111,0.45);
+  box-shadow: 0 10px 22px rgba(21,26,34,0.10);
+  transform: translateY(-1px);
+}
+
+/* Logout button styling */
+.logout-btn{
+  margin-top: 16px;
+  padding: 12px 22px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--primary);
+  color:#fff;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  cursor:pointer;
+  transition: transform 0.08s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.logout-btn:hover{
+  background: #0F131A;
+  box-shadow: 0 12px 28px rgba(21,26,34,0.22);
+}
+
+.logout-btn:active{ transform: translateY(1px); }
+
+/* Footer status line (welcome text) */
+footer{
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+footer p{
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}

@@ -1,0 +1,278 @@
+/**
+ * File: roleManage.css
+ *
+ * Purpose:
+ * - Provides the styling for the Role Management UI.
+ * - Defines the theme (colors, typography, spacing) using CSS variables.
+ * - Styles containers, headings, form inputs, buttons, and the roles table.
+ * - Includes a responsive layout for smaller screens (table collapses into stacked blocks).
+ *
+ * Author: Sandip Bohara Chhetri
+ */
+
+:root{
+  /* Theme tokens */
+  --bg:#F3F0E6;
+  --surface:#FFFFFF;
+  --surface-2:#FBFAF6;
+
+  --text:#151A22;
+  --muted:rgba(21,26,34,0.62);
+
+  --border:rgba(21,26,34,0.12);
+  --border-strong:rgba(21,26,34,0.18);
+
+  --primary:#151A22;
+  --sage:#455048;
+  --accent:#BD916F;
+  --gold:#C0B283;
+
+  --danger:#8F2D2D;
+
+  --shadow:0 18px 50px rgba(0,0,0,0.08);
+  --shadow-soft:0 10px 30px rgba(0,0,0,0.06);
+  --radius:16px;
+
+  /* Typography tokens */
+  --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+  --font-title: ui-serif, Georgia, "Times New Roman", Times, serif;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family: var(--font-body);
+
+  /* Background layers for depth behind cards */
+  background:
+    radial-gradient(900px 520px at 12% 10%, rgba(69,80,72,0.14), transparent 55%),
+    radial-gradient(800px 520px at 90% 0%, rgba(192,178,131,0.18), transparent 60%),
+    var(--bg);
+
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Page wrapper */
+.container{
+  max-width: 980px;
+  margin: 44px auto;
+  padding: 0 18px 40px;
+}
+
+/* Primary page title */
+h1{
+  margin: 0 0 18px;
+  padding: 18px 22px;
+  border-radius: calc(var(--radius) + 6px);
+  background: linear-gradient(135deg, var(--primary), rgba(69,80,72,0.95));
+  color:#fff;
+  letter-spacing: 0.9px;
+  font-family: var(--font-title);
+  font-weight: 700;
+  box-shadow: var(--shadow-soft);
+  text-align:center;
+}
+
+/* Decorative underline under h1 */
+h1:after{
+  content:"";
+  display:block;
+  width: 84px;
+  height: 2px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, transparent, rgba(192,178,131,0.80), transparent);
+}
+
+/* Section headings */
+h2{
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--text);
+  font-family: var(--font-title);
+  letter-spacing: 0.5px;
+}
+
+/* Card containers */
+#roles-container,
+#add-role-container{
+  background: rgba(255,255,255,0.92);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  margin-top: 16px;
+  backdrop-filter: blur(6px);
+}
+
+/* Form labels */
+label{
+  display:block;
+  font-size: 12px;
+  letter-spacing: 0.25px;
+  font-weight: 900;
+  color: var(--muted);
+  margin: 10px 0 8px;
+  text-align:left;
+}
+
+/* Text inputs */
+input{
+  width:100%;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 12px 14px;
+  background:#fff;
+  color: var(--text);
+  outline:none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+/* Focus ring for keyboard/accessibility */
+input:focus{
+  border-color: rgba(189,145,111,0.55);
+  box-shadow: 0 0 0 5px rgba(189,145,111,0.18);
+}
+
+/* Add Role button */
+#addRoleBtn{
+  width:100%;
+  margin-top:10px;
+  background: var(--primary);
+  color:#fff;
+  font-weight:900;
+  letter-spacing: 0.3px;
+  border:1px solid transparent;
+  border-radius:999px;
+  padding: 12px 14px;
+  cursor:pointer;
+  transition: transform 0.08s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+#addRoleBtn:hover{
+  background: #0F131A;
+  box-shadow: 0 12px 28px rgba(21,26,34,0.22);
+}
+
+#addRoleBtn:active{ transform: translateY(1px); }
+
+/* ===== Table ===== */
+table{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 12px;
+  overflow:hidden;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+/* Table header cells */
+thead th{
+  text-align:left;
+  font-size: 12px;
+  letter-spacing: 0.22px;
+  color: rgba(21,26,34,0.72);
+  padding: 12px 14px;
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
+  border-bottom: 1px solid var(--border);
+}
+
+/* Table body cells */
+tbody td{
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  background:#fff;
+}
+
+/* Row hover highlight */
+tbody tr:hover td{
+  background: rgba(69,80,72,0.06);
+}
+
+/* Prevent input margins from affecting cell alignment */
+tbody td input{ margin:0; }
+
+/* Action column alignment */
+td:last-child{
+  text-align:center;
+  white-space: nowrap;
+}
+
+/* Shared styles for action buttons */
+.update-role-btn,
+.delete-role-btn{
+  min-width: 96px;
+  height: 36px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  padding: 0 16px;
+  cursor:pointer;
+  border: 1px solid transparent;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  transition: transform 0.08s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Spacing between Update/Delete buttons */
+td:last-child .update-role-btn,
+td:last-child .delete-role-btn{
+  margin: 0 6px;
+}
+
+/* Update button (sage) */
+.update-role-btn{
+  background: rgba(69,80,72,0.14);
+  color: var(--sage);
+  border-color: rgba(69,80,72,0.22);
+}
+
+.update-role-btn:hover{
+  background: var(--sage);
+  color:#fff;
+  box-shadow: 0 12px 28px rgba(69,80,72,0.18);
+}
+
+/* Delete button (danger) */
+.delete-role-btn{
+  background: rgba(143,45,45,0.10);
+  color: var(--danger);
+  border-color: rgba(143,45,45,0.18);
+}
+
+.delete-role-btn:hover{
+  background: var(--danger);
+  color:#fff;
+  box-shadow: 0 12px 28px rgba(143,45,45,0.18);
+}
+
+.update-role-btn:active,
+.delete-role-btn:active{ transform: translateY(1px); }
+
+/* ===== Responsive table layout =====
+   On narrow screens:
+   - Hide table header
+   - Convert rows/cells into stacked blocks */
+@media (max-width: 860px){
+  thead{ display:none; }
+  table, tbody, tr, td{ display:block; width:100%; }
+  tbody td{
+    border-bottom:0;
+    border-top: 1px solid var(--border);
+  }
+  td:last-child{
+    text-align:left;
+    white-space: normal;
+  }
+  td:last-child .update-role-btn,
+  td:last-child .delete-role-btn{
+    margin: 6px 6px 0 0;
+  }
+}
