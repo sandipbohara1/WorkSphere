@@ -129,8 +129,18 @@ Stored Procedures (Role Update / Role Delete)
 WorkSphere/
 │
 ├── assets/                  # Screenshots & media
-├── directMessage/           # Messaging module
-│
+├──directMessage/
+        │
+        ├── index.php            # Messaging UI (Messenger-style layout)
+        ├── messages.js          # AJAX messaging logic
+        ├── style.css            # Messaging UI styling
+        │
+        └── REST/
+            ├── .htaccess        # URL routing
+            ├── api.php          # REST entry point
+            ├── apiDef.php       # REST controller class
+            ├── dbUtil.php       # Messaging DB utilities
+            └── error_log        # Server error logs
 ├── dbUtil.php               # Database utilities
 ├── server.php               # AJAX controller
 ├── login.php                # Authentication page
