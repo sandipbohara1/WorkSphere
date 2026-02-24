@@ -1,0 +1,49 @@
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE / Editor Files
+# =========================
+.vscode/
+.idea/
+*.code-workspace
+
+# =========================
+# Logs
+# =========================
+error_log
+*.log
+
+# =========================
+# Environment / Secrets
+# =========================
+.env
+.env.local
+config.php
+
+# =========================
+# XAMPP / Local Server
+# =========================
+xampp/
+wamp/
+mamp/
+
+# =========================
+# Database Dumps
+# =========================
+*.sql
+*.dump
+
+# =========================
+# Composer (if added later)
+# =========================
+vendor/
+composer.lock
+
+# =========================
+# Node (if ever added)
+# =========================
+node_modules/
