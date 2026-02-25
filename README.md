@@ -244,5 +244,4 @@ http://localhost/WorkSphere/login.php
 # 👨‍💻 Author
 
 **Sandip Bohara Chhetri**  
-Computer Engineering Technologist  
-Full-Stack Development | Backend Architecture | Secure Systems  
+Computer Engineering Technologist
