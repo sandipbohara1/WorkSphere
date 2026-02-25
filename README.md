@@ -246,9 +246,3 @@ http://localhost/WorkSphere/login.php
 **Sandip Bohara Chhetri**  
 Computer Engineering Technologist  
 Full-Stack Development | Backend Architecture | Secure Systems  
-
----
-
-# 📜 License
-
-MIT License
